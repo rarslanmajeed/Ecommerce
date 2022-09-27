@@ -1,0 +1,107 @@
+import React from "react";
+import Container from "react-bootstrap/Container";
+import { Table } from "react-bootstrap";
+
+const SizeChart = () => {
+  return (
+    <>
+      <Container>
+        <h2 style={{ textAlign: "center" }}>Size Chart</h2>
+        <h2>Shirts</h2>
+        <Table>
+          <thead>
+            <tr>
+              <th>Size</th>
+              <th>Collar</th>
+              <th>Sleeves</th>
+              <th>Shoulder</th>
+              <th>Chest</th>
+              <th>Length</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>Small</td>
+              <td>14-14.5</td>
+              <td>23.5</td>
+              <td>17</td>
+              <td>18.5</td>
+              <td>27.5</td>
+            </tr>
+            <tr>
+              <td>Medium</td>
+              <td>15-15.5</td>
+              <td>24</td>
+              <td>18</td>
+              <td>19.5</td>
+              <td>28.5</td>
+            </tr>
+            <tr>
+              <td>Large</td>
+              <td>16-16.5</td>
+              <td>24.5</td>
+              <td>18.5</td>
+              <td>20.5</td>
+              <td>29</td>
+            </tr>
+            <tr>
+              <td>XL</td>
+              <td>17-17.5</td>
+              <td>25</td>
+              <td>19</td>
+              <td>22</td>
+              <td>29.5</td>
+            </tr>
+            <tr>
+              <td>XXL</td>
+              <td>18-18.5</td>
+              <td>25.5</td>
+              <td>20</td>
+              <td>24</td>
+              <td>29.5</td>
+            </tr>
+          </tbody>
+        </Table>
+        <h2>Bottoms</h2>
+        <Table>
+          <thead>
+            <tr>
+              <th>Size</th>
+              <th>Waist</th>
+              <th>Length</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>Small</td>
+              <td>28</td>
+              <td>37</td>
+            </tr>
+            <tr>
+              <td>Medium</td>
+              <td>30-31</td>
+              <td>37.5-38</td>
+            </tr>
+            <tr>
+              <td>Large</td>
+              <td>32-33</td>
+              <td>38.5-39</td>
+            </tr>
+            <tr>
+              <td>XL</td>
+              <td>34-35</td>
+              <td>39.5-40.5</td>
+            </tr>
+            <tr>
+              <td>XXL</td>
+              <td>36-37</td>
+              <td>41</td>
+            </tr>
+          </tbody>
+        </Table>
+      </Container>
+    </>
+  );
+};
+
+export default SizeChart;
