@@ -9,7 +9,7 @@ import Form from "react-bootstrap/Form";
 import { NavLink, useNavigate } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { Table } from "react-bootstrap";
-import { RMV, ADD, DLT, INC } from "./redux/actions/action";
+import { RMV, ADD, DLT, INC } from "../redux/actions/action";
 const Header = () => {
   const [price, setPrice] = useState(0);
   const getData = useSelector((state) => state.cartreducer.carts);
@@ -255,7 +255,7 @@ const Header = () => {
               ></i>
               <p style={{ fontSize: 22 }}>Your Cart is Empty</p>
               <img
-                src="./cart.gif"
+                src="../assets/cart.gif"
                 alt=""
                 className="emptycart_img"
                 style={{ width: "5rem", padding: 10 }}

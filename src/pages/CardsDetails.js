@@ -3,7 +3,7 @@ import Table from "react-bootstrap/Table";
 import Form from "react-bootstrap/Form";
 import { useDispatch, useSelector } from "react-redux";
 import { useNavigate, useParams } from "react-router-dom";
-import { RMV, ADD, DLT, INC } from "./redux/actions/action";
+import { RMV, ADD, DLT, INC } from "../redux/actions/action";
 import Container from "react-bootstrap/Container";
 
 const CardsDetails = () => {

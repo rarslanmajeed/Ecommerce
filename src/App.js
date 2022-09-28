@@ -1,15 +1,15 @@
 import "./App.css";
 import "bootstrap/dist/css/bootstrap.min.css";
-import Header from "./components/Header";
-import CardsDetails from "./components/CardsDetails";
-import Cards from "./components/Cards";
+import Header from "./layout/Header";
+import CardsDetails from "./pages/CardsDetails";
+import Cards from "./pages/Cards";
 import { Routes, Route } from "react-router-dom";
-import About from "./components/About";
-import Footer from "./components/Footer";
-import Home from "./components/Home";
-import SizeChart from "./components/SizeChart";
-import Faq from "./components/Faq";
-import Order from "./components/Order";
+import About from "./pages/About";
+import Footer from "./layout/Footer";
+import Home from "./pages/Home";
+import SizeChart from "./pages/SizeChart";
+import Faq from "./pages/Faq";
+import Order from "./pages/Order";
 
 function App() {
   return (

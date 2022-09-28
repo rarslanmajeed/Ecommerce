@@ -1,10 +1,10 @@
 import React, { useState } from "react";
 import Button from "react-bootstrap/Button";
 import Card from "react-bootstrap/Card";
-import Products from "./Products";
-import "./style.css";
+import Products from "../data/Products";
+import "../components/style.css";
 import { useDispatch } from "react-redux";
-import { ADD } from "./redux/actions/action";
+import { ADD } from "../redux/actions/action";
 import Dropdown from "react-bootstrap/Dropdown";
 
 const Cards = () => {
