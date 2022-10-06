@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 import Navbar from "react-bootstrap/Navbar";
 import Container from "react-bootstrap/Container";
 import Badge from "@mui/material/Badge";
@@ -23,38 +23,35 @@ const Header = () => {
     <>
       <Navbar bg="dark" variant="dark" style={{ height: "50px" }}>
         <Container>
-          <i class="fa fa-cog fa-spin text-light" style={{ fontSize: 25 }} />
-          <NavLink to="/" className="text-decoration-none text-light mx-3 my-2">
-            E-STORE
-          </NavLink>
+          <i class="fa fa-cog fa-spin text-light" style={{ fontSize: 20 }} />
           <Nav className="me-auto">
             <NavLink
               to="/"
-              className="text-decoration-none text-light mx-3 my-2"
+              className="text-decoration-none text-light mx-2 my-2"
             >
               Home
             </NavLink>
             <NavLink
               to="/about"
-              className="text-decoration-none text-light mx-3 my-2"
+              className="text-decoration-none text-light mx-2 my-2"
             >
               About
             </NavLink>
             <NavLink
               to="/size"
-              className="text-decoration-none text-light mx-3 my-2"
+              className="text-decoration-none text-light mx-2 my-2"
             >
               Size Chart
             </NavLink>
             <NavLink
               to="/faq"
-              className="text-decoration-none text-light mx-3 my-2"
+              className="text-decoration-none text-light mx-2 my-2"
             >
               FAQ's
             </NavLink>
             <NavLink
               to="/products"
-              className="text-decoration-none text-light mx-3 my-2"
+              className="text-decoration-none text-light mx-2 my-2"
             >
               Products
             </NavLink>
@@ -68,7 +65,7 @@ const Header = () => {
           >
             <i
               className="fa-solid fa-cart-shopping text-light"
-              style={{ fontSize: 25, cursor: "pointer" }}
+              style={{ fontSize: 20, cursor: "pointer" }}
             ></i>
           </Badge>
         </Container>
@@ -79,7 +76,7 @@ const Header = () => {
           open={Boolean(anchorEl)}
           onClose={handleClose}
         >
-          <Cart />
+          <Cart onClose={handleClose} />
         </Menu>
       </Navbar>
     </>

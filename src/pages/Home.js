@@ -18,7 +18,7 @@ const Cards = () => {
   return (
     <>
       <div className="container mt-3">
-        <img className="mt-4" src={faker.image.business(1140, 450)} />
+        <img className="mt-4" src={faker.image.business(1140, 450)} alt="" />
         <h2 className="text-center mt-3">Latest Products</h2>
         <div className="row d-flex justify-content-center align-items-center">
           <Form
@@ -68,7 +68,7 @@ const Cards = () => {
                     </Card.Text>
 
                     <div className="button_div d-flex justify-content-center">
-                      {element.quantity >= 1 ? (
+                      {element.maxQuantity >= 1 ? (
                         <Button
                           variant="primary"
                           onClick={() => send(element)}

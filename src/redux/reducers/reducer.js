@@ -9,11 +9,10 @@ export const cartreducer = (state = INIT_STATE, action) => {
         (item) => item.id === action.payload.id
       );
       if (ItemIndex >= 0) {
-        // state.carts[ItemIndex].qnty += 1;
         const arr = [...state.carts];
-        arr[ItemIndex].qnty += 1;
-        if (arr[ItemIndex].qnty > action.payload.quantity)
-          arr[ItemIndex].qnty = action.payload.quantity;
+        arr[ItemIndex].qnty = (arr[ItemIndex].qnty || 0) + 1;
+        if (arr[ItemIndex].qnty > action.payload.maxQuantity)
+          arr[ItemIndex].qnty = action.payload.maxQuantity;
         return {
           ...state,
           carts: arr,
@@ -27,15 +26,13 @@ export const cartreducer = (state = INIT_STATE, action) => {
       }
 
     case "ADD_MORE":
-      const ItemIndexes = state.carts.findIndex(
-        (item) => item.id === action.payload[0].id
-      );
-      const arr = [...state.carts];
-      arr[ItemIndexes].qnty = action.payload[1];
-      return {
-        ...state,
-        carts: arr,
-      };
+      const carts = state.carts.map((item) => {
+        if (item.id === action.payload[0].id) {
+          return { ...item, qnty: Number(action.payload[1]) };
+        }
+        return { ...item };
+      });
+      return { ...state, carts };
 
     case "RMV_CART":
       const data = state.carts.filter((el) => el.id !== action.payload);

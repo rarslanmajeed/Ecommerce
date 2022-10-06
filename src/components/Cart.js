@@ -6,7 +6,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { Table } from "react-bootstrap";
 import { RMV, ADD, DLT, INC } from "../redux/actions/action";
 
-const Cart = () => {
+const Cart = (props) => {
   const [price, setPrice] = useState(0);
   const getData = useSelector((state) => state.cartreducer.carts);
   const history = useNavigate();
@@ -17,20 +17,20 @@ const Cart = () => {
     history("/");
   };
 
-  const send = (e) => {
+  const addToCart = (e) => {
     dispatch(ADD(e));
   };
 
-  const send1 = (e, v) => {
+  const customAdd = (e, v) => {
     if (v < 0) v = 1;
-    else if (v > e.quantity) {
-      v = e.quantity;
+    else if (v > e.maxQuantity) {
+      v = e.maxQuantity;
     }
     dispatch(INC(e, v));
   };
 
-  const remove = (iteam) => {
-    dispatch(DLT(iteam));
+  const remove = (item) => {
+    dispatch(DLT(item));
   };
 
   const total = () => {
@@ -44,7 +44,6 @@ const Cart = () => {
   useEffect(() => {
     total();
   }, [total]);
-
   return (
     <>
       {getData.length ? (
@@ -62,7 +61,7 @@ const Cart = () => {
                   <>
                     <tr>
                       <td>
-                        <NavLink to={`/cart/${e.id}`}>
+                        <NavLink to={`/cart/${e.id}`} onClick={props.onClose}>
                           <img
                             src={e.imgdata}
                             style={{ width: "5rem", height: "4.5rem" }}
@@ -104,7 +103,9 @@ const Cart = () => {
                               >
                                 <Form.Control
                                   type="type"
-                                  onChange={(el) => send1(e, el.target.value)}
+                                  onChange={(el) =>
+                                    customAdd(e, el.target.value)
+                                  }
                                   value={e.qnty}
                                 />
                               </Form.Group>
@@ -112,7 +113,7 @@ const Cart = () => {
                           </span>
                           <span
                             style={{ fontSize: 24 }}
-                            onClick={() => send(e)}
+                            onClick={() => addToCart(e)}
                           >
                             +
                           </span>
@@ -139,7 +140,7 @@ const Cart = () => {
           </Table>
           <tr>
             <td>
-              <NavLink to="/products">
+              <NavLink to="/products" onClick={props.onClose}>
                 <Button className="col-lg-8 mx-2" variant="light">
                   Continue Shopping
                 </Button>
@@ -150,7 +151,7 @@ const Cart = () => {
             </td>
 
             <td>
-              <NavLink to="/order">
+              <NavLink to="/order" onClick={props.onClose}>
                 <Button className="col-lg-10 mx-2" variant="primary">
                   Next
                 </Button>
@@ -163,6 +164,17 @@ const Cart = () => {
           className="d-flex justify-content-center align-items-center"
           style={{ width: "24rem", padding: 10, position: "relative" }}
         >
+          <i
+            className="fas fa-close"
+            onClick={props.onClose}
+            style={{
+              position: "absolute",
+              top: 2,
+              right: 20,
+              fontSize: 23,
+              cursor: "pointer",
+            }}
+          ></i>
           <p style={{ fontSize: 22 }}>Your Cart is Empty</p>
         </div>
       )}

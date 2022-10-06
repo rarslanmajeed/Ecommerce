@@ -10,35 +10,35 @@ const CardsDetails = () => {
   const [data, setData] = useState([]);
   const { id } = useParams();
   const getData = useSelector((state) => state.cartreducer.carts);
-  const history = useNavigate();
+  const navigate = useNavigate();
   const dispatch = useDispatch();
 
   const compare = () => {
     let compareData = getData.filter((e) => {
-      return e.id == id;
+      return e.id === id;
     });
     setData(compareData);
   };
 
-  const send = (e) => {
+  const addToCart = (e) => {
     dispatch(ADD(e));
   };
 
-  const send1 = (e, v) => {
+  const customAdd = (e, v) => {
     if (v < 0) v = 1;
-    else if (v > e.quantity) {
-      v = e.quantity;
+    else if (v > e.maxQuantity) {
+      v = e.maxQuantity;
     }
     dispatch(INC(e, v));
   };
 
   const dlt = (id) => {
     dispatch(RMV(id));
-    history("/");
+    navigate("/");
   };
 
-  const remove = (iteam) => {
-    dispatch(DLT(iteam));
+  const remove = (item) => {
+    dispatch(DLT(item));
   };
 
   useEffect(() => {
@@ -137,13 +137,16 @@ const CardsDetails = () => {
                         >
                           <Form.Control
                             type="type"
-                            onChange={(e) => send1(ele, e.target.value)}
+                            onChange={(e) => customAdd(ele, e.target.value)}
                             value={ele.qnty}
                           />
                         </Form.Group>
                       </Form>
                     </span>
-                    <span style={{ fontSize: 24 }} onClick={() => send(ele)}>
+                    <span
+                      style={{ fontSize: 24 }}
+                      onClick={() => addToCart(ele)}
+                    >
                       +
                     </span>
                   </div>

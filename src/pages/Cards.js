@@ -124,7 +124,7 @@ const Cards = () => {
                     </Card.Text>
 
                     <div className="button_div d-flex justify-content-center">
-                      {element.quantity >= 1 ? (
+                      {element.maxQuantity >= 1 ? (
                         <Button
                           variant="primary"
                           onClick={() => send(element)}

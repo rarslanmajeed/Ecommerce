@@ -10,7 +10,7 @@ const products = [
     price: faker.commerce.price(500, 1000),
     brand: " Dell",
     rating: 4.5,
-    quantity: 10,
+    maxQuantity: 10,
   },
   {
     id: "2",
@@ -21,7 +21,7 @@ const products = [
     price: faker.commerce.price(500, 1000),
     brand: " Hp",
     rating: 4.2,
-    quantity: 5,
+    maxQuantity: 5,
   },
   {
     id: "3",
@@ -32,7 +32,7 @@ const products = [
     price: faker.commerce.price(600, 1200),
     brand: " Asus",
     rating: 4.5,
-    quantity: 8,
+    maxQuantity: 8,
   },
   {
     id: "4",
@@ -43,7 +43,7 @@ const products = [
     price: faker.commerce.price(300, 1000),
     brand: " Samsung",
     rating: 4.5,
-    quantity: 8,
+    maxQuantity: 8,
   },
   {
     id: "5",
@@ -54,7 +54,7 @@ const products = [
     price: faker.commerce.price(500, 1000),
     brand: " Tcl",
     rating: 4.5,
-    quantity: 8,
+    maxQuantity: 8,
   },
   {
     id: "6",
@@ -65,7 +65,7 @@ const products = [
     price: faker.commerce.price(300, 500),
     brand: " Dawlance",
     rating: 4.5,
-    quantity: 8,
+    maxQuantity: 8,
   },
   {
     id: "7",
@@ -76,7 +76,7 @@ const products = [
     price: faker.commerce.price(300, 500),
     brand: " Gree",
     rating: 4.5,
-    quantity: 8,
+    maxQuantity: 8,
   },
   {
     id: "8",
@@ -87,7 +87,7 @@ const products = [
     price: faker.commerce.price(5, 10),
     brand: " Piano",
     rating: 4.5,
-    quantity: 8,
+    maxQuantity: 8,
   },
   {
     id: "9",
@@ -98,7 +98,7 @@ const products = [
     price: faker.commerce.price(5, 10),
     brand: " signature",
     rating: 4.5,
-    quantity: 8,
+    maxQuantity: 8,
   },
   {
     id: "10",
@@ -109,7 +109,7 @@ const products = [
     price: faker.commerce.price(5, 10),
     brand: " dollar",
     rating: 4.5,
-    quantity: 8,
+    maxQuantity: 8,
   },
   {
     id: "11",
@@ -120,7 +120,7 @@ const products = [
     price: faker.commerce.price(10, 25),
     brand: " dollar",
     rating: 4.5,
-    quantity: 8,
+    maxQuantity: 8,
   },
   {
     id: "12",
@@ -131,7 +131,7 @@ const products = [
     price: faker.commerce.price(10, 20),
     brand: " kaghaaz.pk",
     rating: 4.5,
-    quantity: 8,
+    maxQuantity: 8,
   },
   {
     id: "13",
@@ -142,7 +142,7 @@ const products = [
     price: faker.commerce.price(10, 20),
     brand: " Bingo",
     rating: 4.5,
-    quantity: 8,
+    maxQuantity: 8,
   },
   {
     id: "14",
@@ -153,7 +153,7 @@ const products = [
     price: faker.commerce.price(50, 100),
     brand: " AA",
     rating: 4.5,
-    quantity: 8,
+    maxQuantity: 8,
   },
   {
     id: "15",
@@ -164,7 +164,7 @@ const products = [
     price: faker.commerce.price(25000, 100000),
     brand: faker.vehicle.manufacturer(),
     rating: 4.5,
-    quantity: 8,
+    maxQuantity: 8,
   },
   {
     id: "16",
@@ -175,7 +175,7 @@ const products = [
     price: faker.commerce.price(25000, 100000),
     brand: faker.vehicle.manufacturer(),
     rating: 4.5,
-    quantity: 8,
+    maxQuantity: 8,
   },
   {
     id: "17",
@@ -186,7 +186,7 @@ const products = [
     price: faker.commerce.price(25000, 100000),
     brand: faker.vehicle.manufacturer(),
     rating: 4.5,
-    quantity: 8,
+    maxQuantity: 8,
   },
   {
     id: "18",
@@ -197,7 +197,7 @@ const products = [
     price: faker.commerce.price(25000, 100000),
     brand: faker.vehicle.manufacturer(),
     rating: 4.5,
-    quantity: 8,
+    maxQuantity: 8,
   },
   {
     id: "19",
@@ -208,7 +208,7 @@ const products = [
     price: faker.commerce.price(25000, 100000),
     brand: faker.vehicle.manufacturer(),
     rating: 4.5,
-    quantity: 8,
+    maxQuantity: 8,
   },
   {
     id: "20",
@@ -219,7 +219,7 @@ const products = [
     price: faker.commerce.price(25000, 100000),
     brand: faker.vehicle.manufacturer(),
     rating: 4.5,
-    quantity: 8,
+    maxQuantity: 8,
   },
   {
     id: "21",
@@ -230,7 +230,7 @@ const products = [
     price: faker.commerce.price(10, 15),
     brand: " besto",
     rating: 4.5,
-    quantity: 8,
+    maxQuantity: 8,
   },
   {
     id: "22",
@@ -241,7 +241,7 @@ const products = [
     price: faker.commerce.price(150, 250),
     brand: " xiomi",
     rating: 4.1,
-    quantity: 28,
+    maxQuantity: 28,
   },
   {
     id: "23",
@@ -252,7 +252,7 @@ const products = [
     price: faker.commerce.price(25, 50),
     brand: " xiomi",
     rating: 4.7,
-    quantity: 20,
+    maxQuantity: 20,
   },
   {
     id: "24",
@@ -263,7 +263,7 @@ const products = [
     price: faker.commerce.price(50, 100),
     brand: " mikasa",
     rating: 4.6,
-    quantity: 18,
+    maxQuantity: 18,
   },
   {
     id: "25",
@@ -274,7 +274,7 @@ const products = [
     price: faker.commerce.price(50, 100),
     brand: " aerow",
     rating: 4.2,
-    quantity: 8,
+    maxQuantity: 8,
   },
   {
     id: "26",
@@ -285,7 +285,7 @@ const products = [
     price: faker.commerce.price(200, 350),
     brand: " ca",
     rating: 4.7,
-    quantity: 4,
+    maxQuantity: 4,
   },
   {
     id: "27",
@@ -296,7 +296,7 @@ const products = [
     price: faker.commerce.price(50, 100),
     brand: " pfizer",
     rating: 4.9,
-    quantity: 21,
+    maxQuantity: 21,
   },
   {
     id: "28",
@@ -307,7 +307,7 @@ const products = [
     price: faker.commerce.price(10, 15),
     brand: " pfizer",
     rating: 4.2,
-    quantity: 18,
+    maxQuantity: 18,
   },
   {
     id: "29",
@@ -318,7 +318,7 @@ const products = [
     price: faker.commerce.price(5, 10),
     brand: " dermas",
     rating: 4.5,
-    quantity: 8,
+    maxQuantity: 8,
   },
   {
     id: "30",
@@ -329,7 +329,7 @@ const products = [
     price: faker.commerce.price(50, 100),
     brand: " hemani",
     rating: 4.8,
-    quantity: 10,
+    maxQuantity: 10,
   },
 ];
 
