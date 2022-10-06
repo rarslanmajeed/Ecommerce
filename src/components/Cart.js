@@ -33,17 +33,22 @@ const Cart = (props) => {
     dispatch(DLT(item));
   };
 
-  const total = () => {
-    let price = 0;
-    getData.map((ele, k) => {
-      price += ele.price * ele.qnty;
-    });
-    setPrice(price);
-  };
+  useEffect(
+    () => {
+      const total = () => {
+        let p = 0;
+        setPrice(
+          getData.map((ele) => {
+            return (p += ele.price * ele.qnty);
+          })
+        );
+      };
+      total();
+    },
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+    [price]
+  );
 
-  useEffect(() => {
-    total();
-  }, [total]);
   return (
     <>
       {getData.length ? (

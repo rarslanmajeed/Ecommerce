@@ -8,16 +8,21 @@ import Form from "react-bootstrap/Form";
 const Order = () => {
   const getData = useSelector((state) => state.cartreducer.carts);
   const [price, setPrice] = useState(0);
-  const total = () => {
-    let price = 0;
-    getData.map((ele) => {
-      price += ele.price * ele.qnty;
-    });
-    setPrice(price);
-  };
-  useEffect(() => {
-    total();
-  }, [total]);
+  useEffect(
+    () => {
+      const total = () => {
+        let p = 0;
+        setPrice(
+          getData.map((ele) => {
+            return (p += ele.price * ele.qnty);
+          })
+        );
+      };
+      total();
+    },
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+    [price]
+  );
   const [validated, setValidated] = useState(false);
   const handleSubmit = (event) => {
     const form = event.currentTarget;
