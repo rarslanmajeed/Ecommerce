@@ -6,23 +6,11 @@ import Container from "react-bootstrap/Container";
 import Forms from "../components/Forms";
 import Form from "react-bootstrap/Form";
 const Order = () => {
-  const getData = useSelector((state) => state.cartreducer.carts);
-  const [price, setPrice] = useState(0);
-  useEffect(
-    () => {
-      const total = () => {
-        let p = 0;
-        setPrice(
-          getData.map((ele) => {
-            return (p += ele.price * ele.qnty);
-          })
-        );
-      };
-      total();
-    },
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-    [price]
-  );
+  const cartItems = useSelector((state) => state.cartreducer.carts);
+  const price = cartItems.reduce((accumulator, object) => {
+    return accumulator + object.price * object.qnty;
+  }, 0);
+
   const [validated, setValidated] = useState(false);
   const handleSubmit = (event) => {
     const form = event.currentTarget;
@@ -60,7 +48,7 @@ const Order = () => {
               </tr>
             </thead>
             <tbody>
-              {getData.map((e) => {
+              {cartItems.map((e) => {
                 return (
                   <>
                     <tr>

@@ -18,7 +18,15 @@ const Cards = () => {
   return (
     <>
       <div className="container mt-3">
-        <img className="mt-4" src={faker.image.business(1140, 450)} alt="" />
+        <img
+          className="mt-4"
+          src={faker.image.business(1140, 450)}
+          alt=""
+          style={{
+            width: "80vw",
+            padding: "0 0 0 60px",
+          }}
+        />
         <h2 className="text-center mt-3">Latest Products</h2>
         <div className="row d-flex justify-content-center align-items-center">
           <Form
