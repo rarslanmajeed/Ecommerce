@@ -34,7 +34,7 @@ const productslist = [
   {
     id: "1",
     category: "health",
-    name: "Health and Beauty",
+    name: "Health",
     imgdata: faker.image.fashion(500, 480),
   },
 ];

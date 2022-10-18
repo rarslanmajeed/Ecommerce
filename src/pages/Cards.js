@@ -1,30 +1,39 @@
 import React, { useState } from "react";
 import Button from "react-bootstrap/Button";
 import Card from "react-bootstrap/Card";
-import Products from "../data/Products";
+import products from "../data/Products";
 import "../components/style.css";
 import { useDispatch } from "react-redux";
 import { ADD } from "../redux/actions/action";
 import Dropdown from "react-bootstrap/Dropdown";
+import productsList from "../data/ProductsList";
 
 const Cards = () => {
-  const [filter, setFilter] = useState(Products);
+  const [filter, setFilter] = useState(products);
   const dispatch = useDispatch();
   const send = (e) => {
     dispatch(ADD(e));
   };
   const filterProduct = (cat) => {
-    const updatedlist = Products.filter((el) => el.category === cat);
+    const updatedlist = products.filter((el) => el.category === cat);
     setFilter(updatedlist);
   };
   const filterPrice = (p) => {
-    const updatedlist = Products.filter((el) => el.price <= p);
+    const updatedlist = products.filter((el) => el.price <= p);
     setFilter(updatedlist);
   };
+
+  const priceArray = [
+    { value: 100 },
+    { value: 1000 },
+    { value: 10000 },
+    { value: 100000 },
+  ];
+
   return (
     <>
       <div className="container mt-3">
-        <h2 className="text-center">Latest Products</h2>
+        <h2 className="text-center">Latest products</h2>
         <hr />
         <div className="row d-flex justify-content-center align-items-center">
           <div className="buttons d-flex justify-content-center">
@@ -33,62 +42,32 @@ const Cards = () => {
                 Price Range
               </Dropdown.Toggle>
               <Dropdown.Menu>
-                <Dropdown.Item onClick={() => filterPrice(100)}>
-                  under 100 $
-                </Dropdown.Item>
-                <Dropdown.Item onClick={() => filterPrice(1000)}>
-                  under 1000 $
-                </Dropdown.Item>
-                <Dropdown.Item onClick={() => filterPrice(10000)}>
-                  under 10000 $
-                </Dropdown.Item>
-                <Dropdown.Item onClick={() => filterPrice(100000)}>
-                  under 100000 $
-                </Dropdown.Item>
+                {priceArray.map((range) => {
+                  return (
+                    <Dropdown.Item onClick={() => filterPrice(range.value)}>
+                      under {range.value} $
+                    </Dropdown.Item>
+                  );
+                })}
               </Dropdown.Menu>
             </Dropdown>
             <button
               className="btn btn-outline-dark me-2"
-              onClick={() => setFilter(Products)}
+              onClick={() => setFilter(products)}
             >
               All
             </button>
-            <button
-              className="btn btn-outline-dark me-2"
-              onClick={() => filterProduct("Electronics")}
-            >
-              Electronics
-            </button>
-            <button
-              className="btn btn-outline-dark me-2"
-              onClick={() => filterProduct("Stationary")}
-            >
-              Stationary
-            </button>
-            <button
-              className="btn btn-outline-dark me-2"
-              onClick={() => filterProduct("Automotives")}
-            >
-              Automotives
-            </button>
-            <button
-              className="btn btn-outline-dark me-2"
-              onClick={() => filterProduct("Toys")}
-            >
-              Toys
-            </button>
-            <button
-              className="btn btn-outline-dark me-2"
-              onClick={() => filterProduct("Sports")}
-            >
-              Sports
-            </button>
-            <button
-              className="btn btn-outline-dark me-2"
-              onClick={() => filterProduct("Health")}
-            >
-              Health and Beauty
-            </button>
+            {productsList.map((cat, id) => {
+              return (
+                <button
+                  className="btn btn-outline-dark me-2"
+                  key={cat.id}
+                  onClick={() => filterProduct(cat.name)}
+                >
+                  {cat.name}
+                </button>
+              );
+            })}
           </div>
           {filter.map((element, id) => {
             return (

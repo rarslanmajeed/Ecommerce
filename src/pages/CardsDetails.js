@@ -1,20 +1,19 @@
 import React, { useEffect, useState } from "react";
 import Table from "react-bootstrap/Table";
-import Form from "react-bootstrap/Form";
 import { useDispatch, useSelector } from "react-redux";
 import { useNavigate, useParams } from "react-router-dom";
-import { RMV, ADD, DLT, INC } from "../redux/actions/action";
+import { RMV, ADD, DLT } from "../redux/actions/action";
 import Container from "react-bootstrap/Container";
 
 const CardsDetails = () => {
   const [data, setData] = useState([]);
   const { id } = useParams();
-  const getData = useSelector((state) => state.cartreducer.carts);
+  const cartItems = useSelector((state) => state.cartreducer.carts);
   const navigate = useNavigate();
   const dispatch = useDispatch();
 
   const compare = () => {
-    let compareData = getData.filter((e) => {
+    let compareData = cartItems.filter((e) => {
       return e.id === id;
     });
     setData(compareData);
@@ -22,14 +21,6 @@ const CardsDetails = () => {
 
   const addToCart = (e) => {
     dispatch(ADD(e));
-  };
-
-  const customAdd = (e, v) => {
-    if (v < 0) v = 1;
-    else if (v > e.maxQuantity) {
-      v = e.maxQuantity;
-    }
-    dispatch(INC(e, v));
   };
 
   const dlt = (id) => {
@@ -124,26 +115,7 @@ const CardsDetails = () => {
                     >
                       -
                     </span>
-                    <span style={{ fontSize: 22 }}>
-                      <Form
-                        style={{
-                          width: "70px",
-                          alignItems: "center",
-                        }}
-                        className="mt-2"
-                      >
-                        <Form.Group
-                          className="mb-3"
-                          controlId="exampleForm.ControlInput1"
-                        >
-                          <Form.Control
-                            type="type"
-                            onChange={(e) => customAdd(ele, e.target.value)}
-                            value={ele.qnty}
-                          />
-                        </Form.Group>
-                      </Form>
-                    </span>
+                    <span style={{ fontSize: 22 }}>{ele.qnty}</span>
                     <span
                       style={{ fontSize: 24 }}
                       onClick={() => addToCart(ele)}

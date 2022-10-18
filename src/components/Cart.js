@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React from "react";
 import Button from "react-bootstrap/Button";
 import Form from "react-bootstrap/Form";
 import { NavLink, useNavigate } from "react-router-dom";
@@ -7,8 +7,7 @@ import { Table } from "react-bootstrap";
 import { RMV, ADD, DLT, INC } from "../redux/actions/action";
 
 const Cart = (props) => {
-  const [price, setPrice] = useState(0);
-  const getData = useSelector((state) => state.cartreducer.carts);
+  const cartItems = useSelector((state) => state.cartreducer.carts);
   const history = useNavigate();
   const dispatch = useDispatch();
 
@@ -33,25 +32,13 @@ const Cart = (props) => {
     dispatch(DLT(item));
   };
 
-  useEffect(
-    () => {
-      const total = () => {
-        let p = 0;
-        setPrice(
-          getData.map((ele) => {
-            return (p += ele.price * ele.qnty);
-          })
-        );
-      };
-      total();
-    },
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-    [price]
-  );
+  const price = cartItems.reduce((accumulator, object) => {
+    return accumulator + object.price * object.qnty;
+  }, 0);
 
   return (
     <>
-      {getData.length ? (
+      {cartItems.length ? (
         <div className="card-deatils" style={{ width: "24 rem", padding: 10 }}>
           <Table>
             <thead>
@@ -61,7 +48,7 @@ const Cart = (props) => {
               </tr>
             </thead>
             <tbody>
-              {getData.map((e) => {
+              {cartItems.map((e) => {
                 return (
                   <>
                     <tr>

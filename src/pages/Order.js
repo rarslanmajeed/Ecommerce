@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import { useSelector } from "react-redux";
 import Table from "react-bootstrap/Table";
 import Button from "react-bootstrap/Button";
@@ -7,6 +7,7 @@ import Forms from "../components/Forms";
 import Form from "react-bootstrap/Form";
 const Order = () => {
   const cartItems = useSelector((state) => state.cartreducer.carts);
+
   const price = cartItems.reduce((accumulator, object) => {
     return accumulator + object.price * object.qnty;
   }, 0);

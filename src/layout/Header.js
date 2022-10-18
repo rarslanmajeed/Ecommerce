@@ -9,7 +9,7 @@ import Menu from "@mui/material/Menu";
 import Cart from "../components/Cart";
 
 const Header = () => {
-  const getData = useSelector((state) => state.cartreducer.carts);
+  const cartItems = useSelector((state) => state.cartreducer.carts);
   const [anchorEl, setAnchorEl] = useState(null);
 
   const handleClick = (event) => {
@@ -23,7 +23,10 @@ const Header = () => {
     <>
       <Navbar bg="dark" variant="dark" style={{ height: "50px" }}>
         <Container>
-          <i class="fa fa-cog fa-spin text-light" style={{ fontSize: 20 }} />
+          <i
+            className="fa fa-cog fa-spin text-light"
+            style={{ fontSize: 20 }}
+          />
           <Nav className="me-auto">
             <NavLink
               to="/"
@@ -57,7 +60,7 @@ const Header = () => {
             </NavLink>
           </Nav>
           <Badge
-            badgeContent={getData.length}
+            badgeContent={cartItems.length}
             color="primary"
             aria-controls="simple-menu"
             aria-haspopup="true"
