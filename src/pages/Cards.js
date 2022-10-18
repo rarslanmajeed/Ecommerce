@@ -36,8 +36,27 @@ const Cards = () => {
         <h2 className="text-center">Latest products</h2>
         <hr />
         <div className="row d-flex justify-content-center align-items-center">
-          <div className="buttons d-flex justify-content-center">
-            <Dropdown className="me-2">
+          <div className="buttons justify-content-center">
+            <button
+              className="btn btn-outline-dark me-2"
+              onClick={() => setFilter(products)}
+              style={{ margin: "5px" }}
+            >
+              All
+            </button>
+            {productsList.map((cat, id) => {
+              return (
+                <button
+                  className="btn btn-outline-dark me-2"
+                  style={{ margin: "5px" }}
+                  key={cat.id}
+                  onClick={() => filterProduct(cat.name)}
+                >
+                  {cat.name}
+                </button>
+              );
+            })}
+            <Dropdown className="btn  me-2">
               <Dropdown.Toggle variant="bg-black" id="dropdown-basic">
                 Price Range
               </Dropdown.Toggle>
@@ -51,23 +70,6 @@ const Cards = () => {
                 })}
               </Dropdown.Menu>
             </Dropdown>
-            <button
-              className="btn btn-outline-dark me-2"
-              onClick={() => setFilter(products)}
-            >
-              All
-            </button>
-            {productsList.map((cat, id) => {
-              return (
-                <button
-                  className="btn btn-outline-dark me-2"
-                  key={cat.id}
-                  onClick={() => filterProduct(cat.name)}
-                >
-                  {cat.name}
-                </button>
-              );
-            })}
           </div>
           {filter.map((element, id) => {
             return (

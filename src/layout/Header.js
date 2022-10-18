@@ -19,46 +19,36 @@ const Header = () => {
     setAnchorEl(null);
   };
 
+  const pages = [
+    { name: "Home", category: "home", id: 1 },
+    { name: "About", category: "about", id: 2 },
+    { name: "Size Chart", category: "size", id: 3 },
+    { name: "FAQ's", category: "faq", id: 4 },
+    { name: "Products", category: "products", id: 5 },
+  ];
+
   return (
     <>
       <Navbar bg="dark" variant="dark" style={{ height: "50px" }}>
+        <i
+          className="fa fa-cog fa-spin text-light"
+          style={{ fontSize: 20, margin: "auto" }}
+        />
         <Container>
-          <i
-            className="fa fa-cog fa-spin text-light"
-            style={{ fontSize: 20 }}
-          />
-          <Nav className="me-auto">
-            <NavLink
-              to="/"
-              className="text-decoration-none text-light mx-2 my-2"
-            >
-              Home
-            </NavLink>
-            <NavLink
-              to="/about"
-              className="text-decoration-none text-light mx-2 my-2"
-            >
-              About
-            </NavLink>
-            <NavLink
-              to="/size"
-              className="text-decoration-none text-light mx-2 my-2"
-            >
-              Size Chart
-            </NavLink>
-            <NavLink
-              to="/faq"
-              className="text-decoration-none text-light mx-2 my-2"
-            >
-              FAQ's
-            </NavLink>
-            <NavLink
-              to="/products"
-              className="text-decoration-none text-light mx-2 my-2"
-            >
-              Products
-            </NavLink>
-          </Nav>
+          {pages.map((type) => {
+            return (
+              <Nav className="me-auto">
+                <NavLink
+                  to={`/${type.category}`}
+                  key={type.id}
+                  className="text-decoration-none text-light"
+                >
+                  {type.name}
+                </NavLink>
+              </Nav>
+            );
+          })}
+
           <Badge
             badgeContent={cartItems.length}
             color="primary"
