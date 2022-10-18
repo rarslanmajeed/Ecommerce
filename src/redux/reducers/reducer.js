@@ -4,7 +4,7 @@ const INIT_STATE = {
 
 export const cartreducer = (state = INIT_STATE, action) => {
   switch (action.type) {
-    case "ADD_CART":
+    case "addItem":
       const ItemIndex = state.carts.findIndex(
         (item) => item.id === action.payload.id
       );
@@ -25,7 +25,7 @@ export const cartreducer = (state = INIT_STATE, action) => {
         };
       }
 
-    case "ADD_MORE":
+    case "addCustomItem":
       const carts = state.carts.map((item) => {
         if (item.id === action.payload[0].id) {
           return { ...item, qnty: Number(action.payload[1]) };
@@ -34,14 +34,14 @@ export const cartreducer = (state = INIT_STATE, action) => {
       });
       return { ...state, carts };
 
-    case "RMV_CART":
+    case "remove":
       const data = state.carts.filter((el) => el.id !== action.payload);
       return {
         ...state,
         carts: data,
       };
 
-    case "DLT_ONE":
+    case "delItem":
       const ItemIndex_dec = state.carts.findIndex(
         (item) => item.id === action.payload.id
       );

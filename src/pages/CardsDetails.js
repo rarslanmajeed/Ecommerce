@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import Table from "react-bootstrap/Table";
 import { useDispatch, useSelector } from "react-redux";
 import { useNavigate, useParams } from "react-router-dom";
-import { RMV, ADD, DLT } from "../redux/actions/action";
+import { remove, addItem, delItem } from "../redux/actions/action";
 import Container from "react-bootstrap/Container";
 
 const CardsDetails = () => {
@@ -20,16 +20,16 @@ const CardsDetails = () => {
   };
 
   const addToCart = (e) => {
-    dispatch(ADD(e));
+    dispatch(addItem(e));
   };
 
-  const dlt = (id) => {
-    dispatch(RMV(id));
-    navigate("/");
+  const deleteCart = (id) => {
+    dispatch(remove(id));
+    navigate("/home");
   };
 
-  const remove = (item) => {
-    dispatch(DLT(item));
+  const removeCart = (item) => {
+    dispatch(delItem(item));
   };
 
   useEffect(() => {
@@ -93,7 +93,7 @@ const CardsDetails = () => {
                           fontSize: 20,
                           cursor: "pointer",
                         }}
-                        onClick={() => dlt(ele.id)}
+                        onClick={() => deleteCart(ele.id)}
                       ></i>
                     </span>
                   </p>
@@ -110,7 +110,9 @@ const CardsDetails = () => {
                     <span
                       style={{ fontSize: 24 }}
                       onClick={
-                        ele.qnty <= 1 ? () => dlt(ele.id) : () => remove(ele)
+                        ele.qnty <= 1
+                          ? () => deleteCart(ele.id)
+                          : () => removeCart(ele)
                       }
                     >
                       -

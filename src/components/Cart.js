@@ -4,7 +4,12 @@ import Form from "react-bootstrap/Form";
 import { NavLink, useNavigate } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { Table } from "react-bootstrap";
-import { RMV, ADD, DLT, INC } from "../redux/actions/action";
+import {
+  addItem,
+  delItem,
+  addCustomItem,
+  remove,
+} from "../redux/actions/action";
 
 const Cart = (props) => {
   const cartItems = useSelector((state) => state.cartreducer.carts);
@@ -12,12 +17,12 @@ const Cart = (props) => {
   const dispatch = useDispatch();
 
   const dlt = (id) => {
-    dispatch(RMV(id));
-    history("/");
+    dispatch(remove(id));
+    history("/home");
   };
 
   const addToCart = (e) => {
-    dispatch(ADD(e));
+    dispatch(addItem(e));
   };
 
   const customAdd = (e, v) => {
@@ -25,11 +30,11 @@ const Cart = (props) => {
     else if (v > e.maxQuantity) {
       v = e.maxQuantity;
     }
-    dispatch(INC(e, v));
+    dispatch(addCustomItem(e, v));
   };
 
-  const remove = (item) => {
-    dispatch(DLT(item));
+  const removeCart = (item) => {
+    dispatch(delItem(item));
   };
 
   const price = cartItems.reduce((accumulator, object) => {
@@ -76,7 +81,9 @@ const Cart = (props) => {
                           <span
                             style={{ fontSize: 24 }}
                             onClick={
-                              e.qnty <= 1 ? () => dlt(e.id) : () => remove(e)
+                              e.qnty <= 1
+                                ? () => dlt(e.id)
+                                : () => removeCart(e)
                             }
                           >
                             -
@@ -168,6 +175,11 @@ const Cart = (props) => {
             }}
           ></i>
           <p style={{ fontSize: 22 }}>Your Cart is Empty</p>
+          <img
+            src="/images/cart.gif"
+            alt=""
+            style={{ margin: "0 20px", width: "50px" }}
+          />
         </div>
       )}
     </>

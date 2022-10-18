@@ -2,18 +2,18 @@ import React, { useState } from "react";
 import Button from "react-bootstrap/Button";
 import Form from "react-bootstrap/Form";
 import Card from "react-bootstrap/Card";
-import Products from "../data/Products";
+import products from "../data/Products";
 import "../components/style.css";
 import { useDispatch } from "react-redux";
-import { ADD } from "../redux/actions/action";
+import { addItem } from "../redux/actions/action";
 import { faker } from "@faker-js/faker";
 
 const Cards = () => {
   const [query, setQuery] = useState("");
-  const data = Products.filter((e) => e.rname.toLowerCase().includes(query));
+  const data = products.filter((e) => e.rname.toLowerCase().includes(query));
   const dispatch = useDispatch();
   const send = (e) => {
-    dispatch(ADD(e));
+    dispatch(addItem(e));
   };
   return (
     <>
@@ -42,23 +42,23 @@ const Cards = () => {
               />
             </Form.Group>
           </Form>
-          {data.map((element, id) => {
+          {data.map((item, id) => {
             return (
               <>
                 <Card
                   style={{ width: "22rem", border: "none" }}
                   className="mx-2 mt-4 card_style"
-                  key={element.id}
+                  key={item.id}
                 >
                   <Card.Img
                     variant="top"
-                    src={element.imgdata}
+                    src={item.imgdata}
                     style={{ height: "16rem" }}
                     className="mt-3"
                   />
                   <Card.Body>
                     <Card.Title>
-                      {element.rname}{" "}
+                      {item.rname}{" "}
                       <span
                         style={{
                           background: "green",
@@ -67,19 +67,19 @@ const Cards = () => {
                           borderRadius: "5px",
                         }}
                       >
-                        {element.rating} ★
+                        {item.rating} ★
                       </span>
                     </Card.Title>
                     <Card.Text>
-                      <p>Price : $ {element.price}</p>
-                      <p>Brand: {element.brand}</p>
+                      <p>Price : $ {item.price}</p>
+                      <p>Brand: {item.brand}</p>
                     </Card.Text>
 
                     <div className="button_div d-flex justify-content-center">
-                      {element.maxQuantity >= 1 ? (
+                      {item.maxQuantity >= 1 ? (
                         <Button
                           variant="primary"
-                          onClick={() => send(element)}
+                          onClick={() => send(item)}
                           className="col-lg-12"
                         >
                           Add to Cart

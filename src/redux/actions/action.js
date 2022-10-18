@@ -1,27 +1,27 @@
-export const ADD = (item) => {
+export const addItem = (item) => {
   return {
-    type: "ADD_CART",
+    type: "addItem",
     payload: item,
   };
 };
 
-export const DLT = (item) => {
+export const delItem = (item) => {
   return {
-    type: "DLT_ONE",
+    type: "delItem",
     payload: item,
   };
 };
 
-export const RMV = (id) => {
+export const remove = (id) => {
   return {
-    type: "RMV_CART",
+    type: "remove",
     payload: id,
   };
 };
 
-export const INC = (item, v) => {
+export const addCustomItem = (item, v) => {
   return {
-    type: "ADD_MORE",
+    type: "addCustomItem",
     payload: [item, v],
   };
 };
