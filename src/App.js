@@ -17,6 +17,7 @@ function App() {
       <Header />
       <Routes>
         <Route path="/home" element={<Home />} />
+        <Route path="/" element={<Home />} />
         <Route path="/size" element={<SizeChart />} />
         <Route path="/products" element={<Cards />} />
         <Route path="/cart/:id" element={<CardsDetails />} />

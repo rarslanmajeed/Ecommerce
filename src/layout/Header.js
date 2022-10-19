@@ -22,7 +22,7 @@ const Header = () => {
   const pages = [
     { name: "Home", category: "home", id: 1 },
     { name: "About", category: "about", id: 2 },
-    { name: "Size Chart", category: "size", id: 3 },
+    { name: "SizeChart", category: "size", id: 3 },
     { name: "FAQ's", category: "faq", id: 4 },
     { name: "Products", category: "products", id: 5 },
   ];
@@ -30,24 +30,24 @@ const Header = () => {
   return (
     <>
       <Navbar bg="dark" variant="dark" style={{ height: "50px" }}>
-        <i
-          className="fa fa-cog fa-spin text-light"
-          style={{ fontSize: 20, margin: "auto" }}
-        />
         <Container>
-          {pages.map((type) => {
-            return (
-              <Nav className="me-auto">
+          <i
+            className="fa fa-cog fa-spin text-light"
+            style={{ fontSize: 20, margin: "0 10px" }}
+          />
+          <Nav className="me-auto">
+            {pages.map((type) => {
+              return (
                 <NavLink
                   to={`/${type.category}`}
                   key={type.id}
-                  className="text-decoration-none text-light"
+                  className="text-decoration-none text-light mx-2"
                 >
                   {type.name}
                 </NavLink>
-              </Nav>
-            );
-          })}
+              );
+            })}
+          </Nav>
 
           <Badge
             badgeContent={cartItems.length}

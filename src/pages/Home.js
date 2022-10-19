@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useMemo, useState } from "react";
 import Button from "react-bootstrap/Button";
 import Form from "react-bootstrap/Form";
 import Card from "react-bootstrap/Card";
@@ -9,8 +9,14 @@ import { addItem } from "../redux/actions/action";
 import { faker } from "@faker-js/faker";
 
 const Cards = () => {
-  const [query, setQuery] = useState("");
-  const data = products.filter((e) => e.rname.toLowerCase().includes(query));
+  const [search, setSearch] = useState("");
+
+  const searchProduct = useMemo(() => {
+    return products.filter((product) => {
+      return product.rname.toLowerCase().includes(search.toLowerCase());
+    });
+  }, [search]);
+
   const dispatch = useDispatch();
   const send = (e) => {
     dispatch(addItem(e));
@@ -20,7 +26,7 @@ const Cards = () => {
       <div className="container mt-3">
         <img
           className="mt-4"
-          src={faker.image.business(1140, 450)}
+          src={faker.image.business()}
           alt=""
           style={{
             width: "80vw",
@@ -38,11 +44,11 @@ const Cards = () => {
               <Form.Control
                 type="search"
                 placeholder="Enter Products..."
-                onChange={(e) => setQuery(e.target.value)}
+                onChange={(e) => setSearch(e.target.value)}
               />
             </Form.Group>
           </Form>
-          {data.map((item, id) => {
+          {searchProduct.map((item) => {
             return (
               <>
                 <Card
