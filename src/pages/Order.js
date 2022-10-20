@@ -5,6 +5,7 @@ import Button from "react-bootstrap/Button";
 import Container from "react-bootstrap/Container";
 import Forms from "../components/Forms";
 import Form from "react-bootstrap/Form";
+
 const Order = () => {
   const cartItems = useSelector((state) => state.cartreducer.carts);
 
@@ -19,7 +20,6 @@ const Order = () => {
       event.preventDefault();
       event.stopPropagation();
     }
-
     setValidated(true);
   };
   return (
