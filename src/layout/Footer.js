@@ -13,8 +13,6 @@ const Footer = () => {
           textAlign: "center",
           background: "black",
           position: "relative",
-          bottom: 0,
-          width: "100%",
         }}
       >
         ⓒ All rights Reserved. Developed by Arslan Majeed.

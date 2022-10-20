@@ -44,15 +44,15 @@ const CardsDetails = () => {
           <>
             <h2 className="text-center">{ele.rname}</h2>
             <hr />
+            <img
+              src={ele.imgdata}
+              alt=""
+              style={{
+                width: "30vw",
+              }}
+            />
             <Table>
               <tr>
-                <td>
-                  <img
-                    src={ele.imgdata}
-                    alt=""
-                    style={{ padding: "2rem", height: "350px" }}
-                  />
-                </td>
                 <td>
                   <p>
                     <strong>Price</strong> : $ {ele.price}
