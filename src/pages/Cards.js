@@ -1,10 +1,9 @@
 import React, { useState } from "react";
 import products from "../data/Products";
 import "../components/style.css";
-import Dropdown from "react-bootstrap/Dropdown";
-import productsList from "../data/ProductsList";
 import Items from "../components/Items";
-
+import PriceRange from "../components/PriceRange";
+import Categories from "../components/Categories";
 const Cards = () => {
   const [filter, setFilter] = useState(products);
   const filterProduct = (cat) => {
@@ -15,14 +14,6 @@ const Cards = () => {
     const updatedlist = products.filter((el) => el.price <= p);
     setFilter(updatedlist);
   };
-
-  const priceArray = [
-    { value: 10 },
-    { value: 100 },
-    { value: 1000 },
-    { value: 10000 },
-    { value: 100000 },
-  ];
 
   return (
     <>
@@ -38,32 +29,8 @@ const Cards = () => {
             >
               All
             </button>
-            {productsList.map((cat, id) => {
-              return (
-                <button
-                  className="btn btn-outline-dark me-2"
-                  style={{ margin: "5px" }}
-                  key={cat.id}
-                  onClick={() => filterProduct(cat.name)}
-                >
-                  {cat.name}
-                </button>
-              );
-            })}
-            <Dropdown className="btn  me-2">
-              <Dropdown.Toggle variant="bg-black" id="dropdown-basic">
-                Price Range
-              </Dropdown.Toggle>
-              <Dropdown.Menu>
-                {priceArray.map((range) => {
-                  return (
-                    <Dropdown.Item onClick={() => filterPrice(range.value)}>
-                      under {range.value} $
-                    </Dropdown.Item>
-                  );
-                })}
-              </Dropdown.Menu>
-            </Dropdown>
+            <Categories filterProduct={filterProduct} />
+            <PriceRange filterPrice={filterPrice} />
           </div>
           <Items searchProduct={filter} />
         </div>

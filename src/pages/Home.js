@@ -1,8 +1,8 @@
 import React, { useMemo, useState } from "react";
-import Form from "react-bootstrap/Form";
 import products from "../data/Products";
 import "../components/style.css";
 import Items from "../components/Items";
+import Search from "../components/Search";
 
 const Cards = () => {
   const [search, setSearch] = useState("");
@@ -30,19 +30,7 @@ const Cards = () => {
         />
         <h2 className="text-center mt-3">Latest Products</h2>
         <div className="row d-flex justify-content-center align-items-center">
-          <Form
-            style={{
-              width: "1000px",
-            }}
-          >
-            <Form.Group className="mb-3" controlId="exampleForm.ControlInput1">
-              <Form.Control
-                type="search"
-                placeholder="Enter Products..."
-                onChange={(e) => setSearch(e.target.value)}
-              />
-            </Form.Group>
-          </Form>
+          <Search setValue={setSearch} />
           <Items searchProduct={searchProduct} />
         </div>
       </div>
