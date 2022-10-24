@@ -16,21 +16,21 @@ const Cart = (props) => {
   const history = useNavigate();
   const dispatch = useDispatch();
 
-  const dlt = (id) => {
+  const deleteCart = (id) => {
     dispatch(remove(id));
     history("/home");
   };
 
-  const addToCart = (e) => {
-    dispatch(addItem(e));
+  const addToCart = (item) => {
+    dispatch(addItem(item));
   };
 
-  const customAdd = (e, v) => {
-    if (v < 0) v = 1;
-    else if (v > e.maxQuantity) {
-      v = e.maxQuantity;
+  const customAdd = (item, value) => {
+    if (value < 0) value = 1;
+    else if (value > item.maxQuantity) {
+      value = item.maxQuantity;
     }
-    dispatch(addCustomItem(e, v));
+    dispatch(addCustomItem(item, value));
   };
 
   const removeCart = (item) => {
@@ -53,22 +53,25 @@ const Cart = (props) => {
               </tr>
             </thead>
             <tbody>
-              {cartItems.map((e) => {
+              {cartItems.map((element) => {
                 return (
                   <>
                     <tr>
                       <td>
-                        <NavLink to={`/cart/${e.id}`} onClick={props.onClose}>
+                        <NavLink
+                          to={`/cart/${element.id}`}
+                          onClick={props.onClose}
+                        >
                           <img
-                            src={e.imgdata}
+                            src={element.imgdata}
                             style={{ width: "5rem", height: "4.5rem" }}
                             alt=""
                           />
                         </NavLink>
                       </td>
                       <td>
-                        <p>{e.rname}</p>
-                        <p>Price : $ {e.price}</p>
+                        <p>{element.rname}</p>
+                        <p>Price : $ {element.price}</p>
                         <div
                           className="mt-2 d-flex justify-content-between align-items-center"
                           style={{
@@ -81,9 +84,9 @@ const Cart = (props) => {
                           <span
                             style={{ fontSize: 24 }}
                             onClick={
-                              e.qnty <= 1
-                                ? () => dlt(e.id)
-                                : () => removeCart(e)
+                              element.qnty <= 1
+                                ? () => deleteCart(element.id)
+                                : () => removeCart(element)
                             }
                           >
                             -
@@ -103,16 +106,16 @@ const Cart = (props) => {
                                 <Form.Control
                                   type="type"
                                   onChange={(el) =>
-                                    customAdd(e, el.target.value)
+                                    customAdd(element, el.target.value)
                                   }
-                                  value={e.qnty}
+                                  value={element.qnty}
                                 />
                               </Form.Group>
                             </Form>
                           </span>
                           <span
                             style={{ fontSize: 24 }}
-                            onClick={() => addToCart(e)}
+                            onClick={() => addToCart(element)}
                           >
                             +
                           </span>
@@ -128,7 +131,7 @@ const Cart = (props) => {
                       >
                         <i
                           className="fa fa-trash largetrash"
-                          onClick={() => dlt(e.id)}
+                          onClick={() => deleteCart(element.id)}
                         ></i>
                       </td>
                     </tr>

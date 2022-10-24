@@ -6,8 +6,8 @@ import Card from "react-bootstrap/Card";
 
 const Items = (props) => {
   const dispatch = useDispatch();
-  const send = (e) => {
-    dispatch(addItem(e));
+  const send = (item) => {
+    dispatch(addItem(item));
   };
   return (
     <>

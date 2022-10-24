@@ -19,9 +19,9 @@ export const remove = (id) => {
   };
 };
 
-export const addCustomItem = (item, v) => {
+export const addCustomItem = (item, value) => {
   return {
     type: "addCustomItem",
-    payload: [item, v],
+    payload: [item, value],
   };
 };

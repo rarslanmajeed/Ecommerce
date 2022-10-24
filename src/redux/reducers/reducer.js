@@ -9,13 +9,13 @@ export const cartreducer = (state = INIT_STATE, action) => {
         (item) => item.id === action.payload.id
       );
       if (ItemIndex >= 0) {
-        const arr = [...state.carts];
-        arr[ItemIndex].qnty = (arr[ItemIndex].qnty || 0) + 1;
-        if (arr[ItemIndex].qnty > action.payload.maxQuantity)
-          arr[ItemIndex].qnty = action.payload.maxQuantity;
+        const item = [...state.carts];
+        item[ItemIndex].qnty = (item[ItemIndex].qnty || 0) + 1;
+        if (item[ItemIndex].qnty > action.payload.maxQuantity)
+          item[ItemIndex].qnty = action.payload.maxQuantity;
         return {
           ...state,
-          carts: arr,
+          carts: item,
         };
       } else {
         const temp = { ...action.payload, qnty: 1 };
@@ -35,7 +35,9 @@ export const cartreducer = (state = INIT_STATE, action) => {
       return { ...state, carts };
 
     case "remove":
-      const data = state.carts.filter((el) => el.id !== action.payload);
+      const data = state.carts.filter(
+        (element) => element.id !== action.payload
+      );
       return {
         ...state,
         carts: data,
@@ -46,14 +48,16 @@ export const cartreducer = (state = INIT_STATE, action) => {
         (item) => item.id === action.payload.id
       );
       if (state.carts[ItemIndex_dec].qnty >= 1) {
-        const arr1 = [...state.carts];
-        arr1[ItemIndex_dec].qnty -= 1;
+        const array = [...state.carts];
+        array[ItemIndex_dec].qnty -= 1;
         return {
           ...state,
-          carts: arr1,
+          carts: array,
         };
       } else if (state.carts[ItemIndex_dec].qnty === 1) {
-        const data = state.carts.filter((el) => el.id !== action.payload);
+        const data = state.carts.filter(
+          (element) => element.id !== action.payload
+        );
         return {
           ...state,
           carts: data,

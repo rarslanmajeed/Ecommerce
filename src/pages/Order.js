@@ -9,9 +9,10 @@ import Form from "react-bootstrap/Form";
 const Order = () => {
   const cartItems = useSelector((state) => state.cartreducer.carts);
 
-  const price = cartItems.reduce((accumulator, object) => {
-    return accumulator + object.price * object.qnty;
-  }, 0);
+  const price = cartItems.reduce(
+    (accumulator, object) => accumulator + object.price * object.qnty,
+    0
+  );
 
   const [validated, setValidated] = useState(false);
   const handleSubmit = (event) => {
@@ -49,20 +50,20 @@ const Order = () => {
               </tr>
             </thead>
             <tbody>
-              {cartItems.map((e) => {
+              {cartItems.map((element) => {
                 return (
                   <>
                     <tr>
                       <td>
                         <img
-                          src={e.imgdata}
+                          src={element.imgdata}
                           style={{ width: "5rem", height: "3rem" }}
                           alt=""
                         />
                       </td>
-                      <td>{e.rname}</td>
-                      <td>Price : $ {e.price}</td>
-                      <td>{e.qnty}</td>
+                      <td>{element.rname}</td>
+                      <td>Price : $ {element.price}</td>
+                      <td>{element.qnty}</td>
                     </tr>
                   </>
                 );

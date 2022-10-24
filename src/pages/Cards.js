@@ -6,12 +6,14 @@ import PriceRange from "../components/PriceRange";
 import Categories from "../components/Categories";
 const Cards = () => {
   const [filter, setFilter] = useState(products);
-  const filterProduct = (cat) => {
-    const updatedlist = products.filter((el) => el.category === cat);
+  const filterProduct = (category) => {
+    const updatedlist = products.filter(
+      (element) => element.category === category
+    );
     setFilter(updatedlist);
   };
-  const filterPrice = (p) => {
-    const updatedlist = products.filter((el) => el.price <= p);
+  const filterPrice = (price) => {
+    const updatedlist = products.filter((element) => element.price <= price);
     setFilter(updatedlist);
   };
 

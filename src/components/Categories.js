@@ -4,15 +4,15 @@ import productsList from "../data/ProductsList";
 const Categories = (props) => {
   return (
     <>
-      {productsList.map((cat, id) => {
+      {productsList.map((category) => {
         return (
           <button
             className="btn btn-outline-dark me-2"
             style={{ margin: "5px" }}
-            key={cat.id}
-            onClick={() => props.filterProduct(cat.name)}
+            key={category.id}
+            onClick={() => props.filterProduct(category.name)}
           >
-            {cat.name}
+            {category.name}
           </button>
         );
       })}

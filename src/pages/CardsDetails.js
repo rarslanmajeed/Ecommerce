@@ -13,14 +13,14 @@ const CardsDetails = () => {
   const dispatch = useDispatch();
 
   const compare = () => {
-    let compareData = cartItems.filter((e) => {
-      return e.id === id;
+    let compareData = cartItems.filter((item) => {
+      return item.id === id;
     });
     setData(compareData);
   };
 
-  const addToCart = (e) => {
-    dispatch(addItem(e));
+  const addToCart = (item) => {
+    dispatch(addItem(item));
   };
 
   const deleteCart = (id) => {
@@ -39,13 +39,13 @@ const CardsDetails = () => {
 
   return (
     <Container>
-      {data.map((ele) => {
+      {data.map((element) => {
         return (
           <>
-            <h2 className="text-center">{ele.rname}</h2>
+            <h2 className="text-center">{element.rname}</h2>
             <hr />
             <img
-              src={ele.imgdata}
+              src={element.imgdata}
               alt=""
               style={{
                 width: "30vw",
@@ -55,10 +55,10 @@ const CardsDetails = () => {
               <tr>
                 <td>
                   <p>
-                    <strong>Price</strong> : $ {ele.price}
+                    <strong>Price</strong> : $ {element.price}
                   </p>
                   <p>
-                    <strong>Brand</strong> : {ele.brand}
+                    <strong>Brand</strong> : {element.brand}
                   </p>
                   <p>
                     <strong>Rating : </strong>
@@ -70,18 +70,18 @@ const CardsDetails = () => {
                         borderRadius: "5px",
                       }}
                     >
-                      {ele.rating} ★
+                      {element.rating} ★
                     </span>
                   </p>
                   <p>
                     <strong>Category : </strong>
-                    <span>{ele.category}</span>
+                    <span>{element.category}</span>
                   </p>
                   <p>
-                    <strong>Description</strong> : {ele.description}
+                    <strong>Description</strong> : {element.description}
                   </p>
                   <p>
-                    <strong>Total</strong> : $ {ele.price * ele.qnty}
+                    <strong>Total</strong> : $ {element.price * element.qnty}
                   </p>
                   <p>
                     <strong>Remove : </strong>
@@ -93,7 +93,7 @@ const CardsDetails = () => {
                           fontSize: 20,
                           cursor: "pointer",
                         }}
-                        onClick={() => deleteCart(ele.id)}
+                        onClick={() => deleteCart(element.id)}
                       ></i>
                     </span>
                   </p>
@@ -110,17 +110,17 @@ const CardsDetails = () => {
                     <span
                       style={{ fontSize: 24 }}
                       onClick={
-                        ele.qnty <= 1
-                          ? () => deleteCart(ele.id)
-                          : () => removeCart(ele)
+                        element.qnty <= 1
+                          ? () => deleteCart(element.id)
+                          : () => removeCart(element)
                       }
                     >
                       -
                     </span>
-                    <span style={{ fontSize: 22 }}>{ele.qnty}</span>
+                    <span style={{ fontSize: 22 }}>{element.qnty}</span>
                     <span
                       style={{ fontSize: 24 }}
-                      onClick={() => addToCart(ele)}
+                      onClick={() => addToCart(element)}
                     >
                       +
                     </span>
