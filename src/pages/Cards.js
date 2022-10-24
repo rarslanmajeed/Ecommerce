@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import products from "../data/Products";
+import products from "../data/productsData";
 import "../components/style.css";
 import Items from "../components/Items";
 import PriceRange from "../components/PriceRange";
