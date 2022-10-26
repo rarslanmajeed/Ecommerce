@@ -5,11 +5,12 @@ import Button from "react-bootstrap/Button";
 import Container from "react-bootstrap/Container";
 import Forms from "../components/Forms";
 import Form from "react-bootstrap/Form";
+import OrderSummary from "../components/OrderSummary";
 
 const Order = () => {
   const cartItems = useSelector((state) => state.cartreducer.carts);
 
-  const price = cartItems.reduce(
+  const totalPrice = cartItems.reduce(
     (accumulator, object) => accumulator + object.price * object.qnty,
     0
   );
@@ -51,29 +52,14 @@ const Order = () => {
             </thead>
             <tbody>
               {cartItems.map((element) => {
-                return (
-                  <>
-                    <tr>
-                      <td>
-                        <img
-                          src={element.imgdata}
-                          style={{ width: "5rem", height: "3rem" }}
-                          alt=""
-                        />
-                      </td>
-                      <td>{element.rname}</td>
-                      <td>Price : $ {element.price}</td>
-                      <td>{element.qnty}</td>
-                    </tr>
-                  </>
-                );
+                return <OrderSummary element={element} />;
               })}
             </tbody>
           </Table>
         </div>
         <hr />
         <h5 className="mt-2">
-          <strong>Total: </strong>$ {price}
+          <strong>Total: </strong>$ {totalPrice}
         </h5>
         <hr />
         <Button type="submit" onClick={handleSubmit}>

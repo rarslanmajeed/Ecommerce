@@ -6,7 +6,7 @@ import Card from "react-bootstrap/Card";
 
 const Products = (props) => {
   const dispatch = useDispatch();
-  const send = (item) => {
+  const addToCart = (item) => {
     dispatch(addItem(item));
   };
   return (
@@ -39,12 +39,11 @@ const Products = (props) => {
           <p>Price : $ {props.item.price}</p>
           <p>Brand: {props.item.brand}</p>
         </Card.Text>
-
         <div className="button_div d-flex justify-content-center">
           {props.item.maxQuantity >= 1 ? (
             <Button
               variant="primary"
-              onClick={() => send(props.item)}
+              onClick={() => addToCart(props.item)}
               className="col-lg-12"
             >
               Add to Cart

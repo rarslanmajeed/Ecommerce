@@ -5,11 +5,7 @@ const Items = (props) => {
   return (
     <>
       {props.searchProduct.map((item) => {
-        return (
-          <>
-            <Products item={item} />
-          </>
-        );
+        return <Products item={item} />;
       })}
     </>
   );

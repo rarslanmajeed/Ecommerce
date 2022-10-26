@@ -1,45 +1,25 @@
 import React from "react";
 import Button from "react-bootstrap/Button";
-import Form from "react-bootstrap/Form";
-import { NavLink, useNavigate } from "react-router-dom";
+import { useNavigate, NavLink } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { Table } from "react-bootstrap";
-import {
-  addItem,
-  delItem,
-  addCustomItem,
-  remove,
-} from "../redux/actions/action";
+import { remove } from "../redux/actions/action";
+import EmptyCart from "./EmptyCart";
+import QuantityButton from "./QuantityButton";
 
 const Cart = (props) => {
   const cartItems = useSelector((state) => state.cartreducer.carts);
-  const history = useNavigate();
+  const navigate = useNavigate();
   const dispatch = useDispatch();
-
   const deleteCart = (id) => {
     dispatch(remove(id));
-    history("/home");
+    navigate("/home");
   };
 
-  const addToCart = (item) => {
-    dispatch(addItem(item));
-  };
-
-  const customAdd = (item, value) => {
-    if (value < 0) value = 1;
-    else if (value > item.maxQuantity) {
-      value = item.maxQuantity;
-    }
-    dispatch(addCustomItem(item, value));
-  };
-
-  const removeCart = (item) => {
-    dispatch(delItem(item));
-  };
-
-  const price = cartItems.reduce((accumulator, object) => {
-    return accumulator + object.price * object.qnty;
-  }, 0);
+  const totalPrice = cartItems.reduce(
+    (accumulator, object) => accumulator + object.price * object.qnty,
+    0
+  );
 
   return (
     <>
@@ -72,54 +52,10 @@ const Cart = (props) => {
                       <td>
                         <p>{element.rname}</p>
                         <p>Price : $ {element.price}</p>
-                        <div
-                          className="mt-2 d-flex justify-content-between align-items-center"
-                          style={{
-                            width: 200,
-                            cursor: "pointer",
-                            color: "#111",
-                          }}
-                        >
-                          Quantity:
-                          <span
-                            style={{ fontSize: 24 }}
-                            onClick={
-                              element.qnty <= 1
-                                ? () => deleteCart(element.id)
-                                : () => removeCart(element)
-                            }
-                          >
-                            -
-                          </span>
-                          <span style={{ fontSize: 15 }}>
-                            <Form
-                              style={{
-                                width: "50px",
-                                alignItems: "center",
-                              }}
-                              className="mt-2"
-                            >
-                              <Form.Group
-                                className="mb-3"
-                                controlId="exampleForm.ControlInput1"
-                              >
-                                <Form.Control
-                                  type="type"
-                                  onChange={(el) =>
-                                    customAdd(element, el.target.value)
-                                  }
-                                  value={element.qnty}
-                                />
-                              </Form.Group>
-                            </Form>
-                          </span>
-                          <span
-                            style={{ fontSize: 24 }}
-                            onClick={() => addToCart(element)}
-                          >
-                            +
-                          </span>
-                        </div>
+                        <QuantityButton
+                          element={element}
+                          deleteCart={deleteCart}
+                        />
                       </td>
                       <td
                         className="mt-5"
@@ -149,7 +85,7 @@ const Cart = (props) => {
               </NavLink>
             </td>
             <td>
-              <strong>Total: </strong>$ {price}
+              <strong>Total: </strong>$ {totalPrice}
             </td>
 
             <td>
@@ -162,28 +98,7 @@ const Cart = (props) => {
           </tr>
         </div>
       ) : (
-        <div
-          className="d-flex justify-content-center align-items-center"
-          style={{ width: "24rem", padding: 10, position: "relative" }}
-        >
-          <i
-            className="fas fa-close"
-            onClick={props.onClose}
-            style={{
-              position: "absolute",
-              top: 2,
-              right: 20,
-              fontSize: 23,
-              cursor: "pointer",
-            }}
-          ></i>
-          <p style={{ fontSize: 22 }}>Your Cart is Empty</p>
-          <img
-            src="/images/cart.gif"
-            alt=""
-            style={{ margin: "0 20px", width: "50px" }}
-          />
-        </div>
+        <EmptyCart onClose={props.onClose} />
       )}
     </>
   );

@@ -1,9 +1,10 @@
 import React, { useEffect, useState } from "react";
-import Table from "react-bootstrap/Table";
 import { useDispatch, useSelector } from "react-redux";
 import { useNavigate, useParams } from "react-router-dom";
-import { remove, addItem, delItem } from "../redux/actions/action";
+import { remove } from "../redux/actions/action";
 import Container from "react-bootstrap/Container";
+import ProductDetail from "../components/ProductDetail";
+import QuantityButton from "../components/QuantityButton";
 
 const CardsDetails = () => {
   const [data, setData] = useState([]);
@@ -19,17 +20,9 @@ const CardsDetails = () => {
     setData(compareData);
   };
 
-  const addToCart = (item) => {
-    dispatch(addItem(item));
-  };
-
   const deleteCart = (id) => {
     dispatch(remove(id));
     navigate("/home");
-  };
-
-  const removeCart = (item) => {
-    dispatch(delItem(item));
   };
 
   useEffect(() => {
@@ -51,83 +44,13 @@ const CardsDetails = () => {
                 width: "30vw",
               }}
             />
-            <Table>
-              <tr>
-                <td>
-                  <p>
-                    <strong>Price</strong> : $ {element.price}
-                  </p>
-                  <p>
-                    <strong>Brand</strong> : {element.brand}
-                  </p>
-                  <p>
-                    <strong>Rating : </strong>
-                    <span
-                      style={{
-                        background: "green",
-                        color: "#fff",
-                        padding: "2px 5px",
-                        borderRadius: "5px",
-                      }}
-                    >
-                      {element.rating} ★
-                    </span>
-                  </p>
-                  <p>
-                    <strong>Category : </strong>
-                    <span>{element.category}</span>
-                  </p>
-                  <p>
-                    <strong>Description</strong> : {element.description}
-                  </p>
-                  <p>
-                    <strong>Total</strong> : $ {element.price * element.qnty}
-                  </p>
-                  <p>
-                    <strong>Remove : </strong>
-                    <span>
-                      <i
-                        className="fas fa-trash"
-                        style={{
-                          color: "red",
-                          fontSize: 20,
-                          cursor: "pointer",
-                        }}
-                        onClick={() => deleteCart(element.id)}
-                      ></i>
-                    </span>
-                  </p>
-                  <strong>Quantity : </strong>
-                  <div
-                    className="mt-3 d-flex justify-content-between align-items-center"
-                    style={{
-                      width: 150,
-                      cursor: "pointer",
 
-                      color: "#111",
-                    }}
-                  >
-                    <span
-                      style={{ fontSize: 24 }}
-                      onClick={
-                        element.qnty <= 1
-                          ? () => deleteCart(element.id)
-                          : () => removeCart(element)
-                      }
-                    >
-                      -
-                    </span>
-                    <span style={{ fontSize: 22 }}>{element.qnty}</span>
-                    <span
-                      style={{ fontSize: 24 }}
-                      onClick={() => addToCart(element)}
-                    >
-                      +
-                    </span>
-                  </div>
-                </td>
-              </tr>
-            </Table>
+            <tr>
+              <td>
+                <ProductDetail element={element} deleteCart={deleteCart} />
+                <QuantityButton element={element} deleteCart={deleteCart} />
+              </td>
+            </tr>
           </>
         );
       })}
