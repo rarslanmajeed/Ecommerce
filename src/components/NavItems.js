@@ -4,6 +4,7 @@ import { NavLink } from "react-router-dom";
 
 const NavItems = () => {
   const pages = [
+    // Array of Pages Names present on Website.
     { name: "Home", category: "home", id: 1 },
     { name: "About", category: "about", id: 2 },
     { name: "SizeChart", category: "size", id: 3 },
@@ -15,7 +16,7 @@ const NavItems = () => {
     <Nav className="me-auto">
       {pages.map((type) => {
         return (
-          <NavLink
+          <NavLink // directs to the Page Clicked
             to={`/${type.category}`}
             key={type.id}
             className="text-decoration-none text-light mx-2"

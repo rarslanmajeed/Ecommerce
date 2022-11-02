@@ -8,14 +8,17 @@ import EmptyCart from "./EmptyCart";
 import QuantityButton from "./QuantityButton";
 
 const Cart = (props) => {
-  const cartItems = useSelector((state) => state.cartreducer.carts);
+  const cartItems = useSelector((state) => state.cartreducer.carts); // store the Items in Cart
   const navigate = useNavigate();
   const dispatch = useDispatch();
+
+  // this function remove the items from cart
   const deleteCart = (id) => {
     dispatch(remove(id));
     navigate("/home");
   };
 
+  // this function calculate the total amount of items added in cart
   const totalPrice = cartItems.reduce(
     (accumulator, object) => accumulator + object.price * object.qnty,
     0
@@ -23,7 +26,7 @@ const Cart = (props) => {
 
   return (
     <>
-      {cartItems.length ? (
+      {cartItems.length ? ( // check if there is something in cart or not
         <div className="card-deatils" style={{ width: "24 rem", padding: 10 }}>
           <Table>
             <thead>
@@ -34,11 +37,12 @@ const Cart = (props) => {
             </thead>
             <tbody>
               {cartItems.map((element) => {
+                // this map function is used to display items in Cart
                 return (
                   <>
                     <tr>
                       <td>
-                        <NavLink
+                        <NavLink // this is to direct to Details Page
                           to={`/cart/${element.id}`}
                           onClick={props.onClose}
                         >
@@ -52,7 +56,7 @@ const Cart = (props) => {
                       <td>
                         <p>{element.rname}</p>
                         <p>Price : $ {element.price}</p>
-                        <QuantityButton
+                        <QuantityButton // this Component display the increment and decrement button
                           element={element}
                           deleteCart={deleteCart}
                         />
@@ -65,7 +69,7 @@ const Cart = (props) => {
                           cursor: "pointer",
                         }}
                       >
-                        <i
+                        <i // this is the delete button which remove item from Cart
                           className="fa fa-trash largetrash"
                           onClick={() => deleteCart(element.id)}
                         ></i>
@@ -98,7 +102,7 @@ const Cart = (props) => {
           </tr>
         </div>
       ) : (
-        <EmptyCart onClose={props.onClose} />
+        <EmptyCart onClose={props.onClose} /> //this Component display when Cart is Empty
       )}
     </>
   );

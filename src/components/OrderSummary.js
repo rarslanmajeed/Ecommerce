@@ -1,3 +1,4 @@
+// This Component is used to Display the Products Included in the Order
 import React from "react";
 
 const OrderSummary = (props) => {

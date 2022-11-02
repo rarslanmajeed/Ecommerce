@@ -3,7 +3,7 @@ import { DebounceInput } from "react-debounce-input";
 
 const Search = (props) => {
   return (
-    <DebounceInput
+    <DebounceInput // search starts 0.5s after stop typing
       minLength={2}
       className="search"
       placeholder="Search Products..."

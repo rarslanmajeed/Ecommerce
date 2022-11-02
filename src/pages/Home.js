@@ -5,12 +5,13 @@ import Items from "../components/Items";
 import Search from "../components/Search";
 
 const Cards = () => {
-  const [search, setSearch] = useState("");
+  const [search, setSearch] = useState(""); // initialize search to null
 
   const searchProduct = useMemo(() => {
+    // useMemo hook to run only if the search is changes and search the result matched.
     return products.filter((product) => {
       return (
-        product.rname.toLowerCase().includes(search.toLowerCase()) ||
+        product.rname.toLowerCase().includes(search.toLowerCase()) || // search using name or category
         product.category.toLowerCase().includes(search.toLowerCase())
       );
     });

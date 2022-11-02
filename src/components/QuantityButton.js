@@ -1,20 +1,22 @@
 import React from "react";
 import { addItem, delItem, addCustomItem } from "../redux/actions/action";
 import { useDispatch } from "react-redux";
-import Form from "react-bootstrap/Form";
 
 const QuantityButton = (props) => {
   const dispatch = useDispatch();
 
   const addToCart = (item) => {
+    // Redux Function to Add Item in Cart and Increment Quantity
     dispatch(addItem(item));
   };
 
   const removeCart = (item) => {
+    // this function decrement the item quantity from cart
     dispatch(delItem(item));
   };
 
   const customAdd = (item, value) => {
+    // Redux Function to manually add quantity of item in cart
     if (value <= 0) value = 1;
     else if (value > item.maxQuantity) {
       value = item.maxQuantity;
@@ -27,7 +29,6 @@ const QuantityButton = (props) => {
       style={{
         width: 150,
         cursor: "pointer",
-
         color: "#111",
       }}
     >
@@ -44,21 +45,15 @@ const QuantityButton = (props) => {
         -
       </span>
       <span style={{ fontSize: 15 }}>
-        <Form
+        <input // input Manually the quantity of Item added in cart
           style={{
-            width: "50px",
+            width: "30px",
             alignItems: "center",
           }}
           className="mt-2"
-        >
-          <Form.Group className="mb-3" controlId="exampleForm.ControlInput1">
-            <Form.Control
-              type="type"
-              onChange={(el) => customAdd(props.element, el.target.value)}
-              value={props.element.qnty}
-            />
-          </Form.Group>
-        </Form>
+          onChange={(el) => customAdd(props.element, el.target.value)}
+          value={props.element.qnty}
+        ></input>
       </span>
       <span style={{ fontSize: 24 }} onClick={() => addToCart(props.element)}>
         +

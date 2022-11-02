@@ -1,3 +1,4 @@
+// This Component is used to get information relation to Order like Name, Address
 import React from "react";
 import Col from "react-bootstrap/Col";
 import Form from "react-bootstrap/Form";

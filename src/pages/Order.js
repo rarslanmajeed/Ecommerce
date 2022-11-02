@@ -8,15 +8,18 @@ import Form from "react-bootstrap/Form";
 import OrderSummary from "../components/OrderSummary";
 
 const Order = () => {
-  const cartItems = useSelector((state) => state.cartreducer.carts);
+  const cartItems = useSelector((state) => state.cartreducer.carts); // store the items present in cart
 
   const totalPrice = cartItems.reduce(
     (accumulator, object) => accumulator + object.price * object.qnty,
     0
-  );
+  ); // calculate the total price of the items present in cart.
+
+  const title = ["Photo", "Product", "Price", "Quantity"];
 
   const [validated, setValidated] = useState(false);
   const handleSubmit = (event) => {
+    // function which checks that all required forms are filled correctly when sub,it is pressed.
     const form = event.currentTarget;
     if (form.checkValidity() === false) {
       event.preventDefault();
@@ -44,14 +47,14 @@ const Order = () => {
           <Table>
             <thead>
               <tr>
-                <th>Photo</th>
-                <th>Product</th>
-                <th>Price</th>
-                <th>Quantity</th>
+                {title.map((heading) => {
+                  return <th>{heading}</th>;
+                })}
               </tr>
             </thead>
             <tbody>
               {cartItems.map((element) => {
+                // shows the items in cart
                 return <OrderSummary element={element} />;
               })}
             </tbody>

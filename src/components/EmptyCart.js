@@ -6,7 +6,7 @@ const EmptyCart = (props) => {
       className="d-flex justify-content-center align-items-center"
       style={{ width: "24rem", padding: 10, position: "relative" }}
     >
-      <i
+      <i // It is the close button displayed when cart is empty
         className="fas fa-close"
         onClick={props.onClose}
         style={{

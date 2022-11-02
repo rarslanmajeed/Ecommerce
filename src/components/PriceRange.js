@@ -2,6 +2,7 @@ import React from "react";
 import Dropdown from "react-bootstrap/Dropdown";
 
 const PriceRange = (props) => {
+  // Array which have Price Range
   const priceArray = [
     { value: 10 },
     { value: 100 },
@@ -17,6 +18,7 @@ const PriceRange = (props) => {
       <Dropdown.Menu>
         {priceArray.map((range) => {
           return (
+            // Return the Items Under That Price
             <Dropdown.Item onClick={() => props.filterPrice(range.value)}>
               under {range.value} $
             </Dropdown.Item>

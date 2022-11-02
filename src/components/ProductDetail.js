@@ -1,3 +1,4 @@
+// This Component displays the Details of Products on CardsDetail Page
 import React from "react";
 
 const ProductDetail = (props) => {

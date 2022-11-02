@@ -7,13 +7,14 @@ import ProductDetail from "../components/ProductDetail";
 import QuantityButton from "../components/QuantityButton";
 
 const CardsDetails = () => {
-  const [data, setData] = useState([]);
-  const { id } = useParams();
-  const cartItems = useSelector((state) => state.cartreducer.carts);
-  const navigate = useNavigate();
+  const [data, setData] = useState([]); // initialize data to null
+  const { id } = useParams(); // gets the id of the item
+  const cartItems = useSelector((state) => state.cartreducer.carts); // store the items in Cart
+  const navigate = useNavigate(); // it navigates from current page to the page listed
   const dispatch = useDispatch();
 
   const compare = () => {
+    // check whether the fetch id is present in cart
     let compareData = cartItems.filter((item) => {
       return item.id === id;
     });
@@ -21,6 +22,7 @@ const CardsDetails = () => {
   };
 
   const deleteCart = (id) => {
+    // this function remove the items from cart
     dispatch(remove(id));
     navigate("/home");
   };
@@ -44,7 +46,6 @@ const CardsDetails = () => {
                 width: "30vw",
               }}
             />
-
             <tr>
               <td>
                 <ProductDetail element={element} deleteCart={deleteCart} />
