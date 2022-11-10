@@ -25,15 +25,15 @@ const QuantityButton = (props) => {
   };
   return (
     <div
-      className="mt-3 d-flex justify-content-between align-items-center"
+      className="d-flex align-items-center"
       style={{
         width: 150,
         cursor: "pointer",
         color: "#111",
       }}
     >
-      <span
-        style={{ fontSize: 24 }}
+      <td
+        style={{ fontSize: 20, padding: 10 }}
         onClick={
           props.element.qnty <= 1
             ? () => {
@@ -43,21 +43,23 @@ const QuantityButton = (props) => {
         }
       >
         -
-      </span>
-      <span style={{ fontSize: 15 }}>
+      </td>
+      <td style={{ fontSize: 15, padding: 10 }}>
         <input // input Manually the quantity of Item added in cart
           style={{
             width: "30px",
-            alignItems: "center",
           }}
           className="mt-2"
           onChange={(el) => customAdd(props.element, el.target.value)}
           value={props.element.qnty}
         ></input>
-      </span>
-      <span style={{ fontSize: 24 }} onClick={() => addToCart(props.element)}>
+      </td>
+      <td
+        style={{ fontSize: 20, padding: 10 }}
+        onClick={() => addToCart(props.element)}
+      >
         +
-      </span>
+      </td>
     </div>
   );
 };

@@ -93,7 +93,7 @@ const Cart = (props) => {
             </td>
 
             <td>
-              <NavLink to="/order" onClick={props.onClose}>
+              <NavLink to="/cartProducts" onClick={props.onClose}>
                 <Button className="col-lg-10 mx-2" variant="primary">
                   Next
                 </Button>

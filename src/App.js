@@ -9,7 +9,8 @@ import Footer from "./layout/Footer";
 import Home from "./pages/Home";
 import SizeChart from "./pages/SizeChart";
 import Faq from "./pages/Faq";
-import Order from "./pages/Order";
+import CartProducts from "./pages/CartProducts";
+import PersonDetail from "./pages/PersonDetail";
 
 function App() {
   return (
@@ -21,9 +22,10 @@ function App() {
         <Route path="/size" element={<SizeChart />} />
         <Route path="/products" element={<Cards />} />
         <Route path="/cart/:id" element={<CardsDetails />} />
-        <Route path="/order" element={<Order />} />
+        <Route path="/cartProducts" element={<CartProducts />} />
         <Route path="/about" element={<About />} />
         <Route path="/faq" element={<Faq />} />
+        <Route path="/personDetail" element={<PersonDetail />} />
       </Routes>
       <Footer />
     </>

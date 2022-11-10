@@ -34,9 +34,6 @@ const Forms = () => {
             <Form.Group as={Col} md="4" controlId="validationCustom01">
               <Form.Label>{label}</Form.Label>
               <Form.Control required type="text" placeholder={label} />
-              <Form.Control.Feedback type="invalid">
-                Please provide a valid {label}
-              </Form.Control.Feedback>
             </Form.Group>
           );
         })}

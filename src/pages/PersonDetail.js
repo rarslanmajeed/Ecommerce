@@ -65,7 +65,7 @@ const Order = () => {
           <strong>Total: </strong>$ {totalPrice}
         </h5>
         <hr />
-        <Button type="submit" onClick={handleSubmit}>
+        <Button href="/home" type="submit" onClick={handleSubmit}>
           Place Order
         </Button>
       </Form>

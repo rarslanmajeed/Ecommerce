@@ -13,7 +13,7 @@ const OrderSummary = (props) => {
           />
         </td>
         <td>{props.element.rname}</td>
-        <td>Price : $ {props.element.price}</td>
+        <td>$ {props.element.price}</td>
         <td>{props.element.qnty}</td>
       </tr>
     </>
