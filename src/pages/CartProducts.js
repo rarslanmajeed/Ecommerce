@@ -66,7 +66,7 @@ const CartProducts = () => {
             </td>
             <td>
               {cartItems.length ? (
-                <NavLink to="/personDetail">
+                <NavLink to="/details">
                   <Button className="col-lg-10 mx-2" variant="primary">
                     Proceed to Checkout
                   </Button>

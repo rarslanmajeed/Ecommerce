@@ -10,7 +10,7 @@ import Home from "./pages/Home";
 import SizeChart from "./pages/SizeChart";
 import Faq from "./pages/Faq";
 import CartProducts from "./pages/CartProducts";
-import PersonDetail from "./pages/PersonDetail";
+import Details from "./pages/Details";
 
 function App() {
   return (
@@ -25,7 +25,7 @@ function App() {
         <Route path="/cartProducts" element={<CartProducts />} />
         <Route path="/about" element={<About />} />
         <Route path="/faq" element={<Faq />} />
-        <Route path="/personDetail" element={<PersonDetail />} />
+        <Route path="/details" element={<Details />} />
       </Routes>
       <Footer />
     </>
