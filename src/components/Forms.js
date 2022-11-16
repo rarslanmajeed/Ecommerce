@@ -3,14 +3,10 @@ import React from "react";
 import Col from "react-bootstrap/Col";
 import Form from "react-bootstrap/Form";
 import Row from "react-bootstrap/Row";
-import StripeCheckout from "react-stripe-checkout";
 
 const Forms = (props) => {
   const row1 = ["First name", "Last name", "Phone Number"];
   const row2 = ["City", "State", "Zip"];
-  const onToken = (token) => {
-    console.log(token);
-  };
   return (
     <>
       <Row className="mb-3">
@@ -42,31 +38,6 @@ const Forms = (props) => {
           );
         })}
       </Row>
-      <label style={{ padding: "10 0" }}>
-        <strong>Payment Method</strong>
-      </label>
-      <div key="radio" className="mb-3">
-        <Form.Check
-          label="Cash on Delivery"
-          name="group1"
-          type="radio"
-          id="Cash"
-          required
-        />
-        <Form.Check
-          label={
-            <StripeCheckout
-              token={onToken}
-              name="Payment"
-              amount={props.totalPrice * 100}
-              stripeKey="pk_test_51M2vb6KZBspn6WKKUZ0VvDFGfO6Y2wa8tKR1W4CrSCV5U6WUBcgjFi1f2VvAxVsBYkoEnFJFEvQVdjgQJ0OwUDQq00g0qqqKN2"
-            />
-          }
-          name="group1"
-          type="radio"
-          id="Card"
-        />
-      </div>
 
       <Form.Group className="mb-3" controlId="exampleForm.ControlTextarea1">
         <Form.Label>Delivery Instructions</Form.Label>
