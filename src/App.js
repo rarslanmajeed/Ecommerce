@@ -11,6 +11,7 @@ import SizeChart from "./pages/SizeChart";
 import Faq from "./pages/Faq";
 import CartProducts from "./pages/CartProducts";
 import Details from "./pages/Details";
+import PaymentForm from "./components/PaymentForm";
 
 function App() {
   return (
@@ -26,6 +27,7 @@ function App() {
         <Route path="/about" element={<About />} />
         <Route path="/faq" element={<Faq />} />
         <Route path="/details" element={<Details />} />
+        <Route path="/payment" element={<PaymentForm />} />
       </Routes>
       <Footer />
     </>

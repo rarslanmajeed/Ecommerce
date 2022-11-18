@@ -84,7 +84,7 @@ const Cart = (props) => {
             <td>
               <NavLink to="/products" onClick={props.onClose}>
                 <Button className="col-lg-8 mx-2" variant="light">
-                  Continue Shopping
+                  Return
                 </Button>
               </NavLink>
             </td>
