@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import { CardElement, useElements, useStripe } from "@stripe/react-stripe-js";
 import axios from "axios";
 import "../pages/style.css";
+import Button from "react-bootstrap/Button";
 
 const CARD_OPTIONS = {
   iconStyle: "solid",
@@ -62,7 +63,9 @@ export default function PaymentForm(props) {
               <CardElement options={CARD_OPTIONS} />
             </div>
           </fieldset>
-          <button type="submit">Pay ${props.totalPrice}</button>
+          <Button type="submit" variant="dark">
+            Pay ${props.totalPrice}
+          </Button>
         </form>
       ) : (
         <div>
